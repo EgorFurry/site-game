@@ -57,6 +57,21 @@ function showTextWithEffect(text) {
   }, 25);
 }
 
+const prevBtn = document.getElementById("prevBtn");
+
+prevBtn.addEventListener("click", () => {
+  if (isTyping) return;
+
+  if (currentTextIndex > 0) {
+    currentTextIndex--;
+  } else if (currentScene > 0) {
+    currentScene--;
+    currentTextIndex = scenes[currentScene].text.length - 1;
+  }
+  showCurrentScene();
+});
+
+
 function showCurrentScene() {
   const scene = scenes[currentScene];
   background.style.backgroundImage = `url('${scene.background}')`;
