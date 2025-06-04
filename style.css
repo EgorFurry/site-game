@@ -51,13 +51,39 @@ body, html {
   min-height: 80px;
 }
 
-/* Контейнер кнопки */
+#text-box {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 700px;
+  width: 90%;
+  padding: 25px 40px 60px 40px; /* увеличим нижний паддинг, чтобы кнопка не налезала на текст */
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative; /* для абсолютного позиционирования кнопки внутри */
+}
+
+/* Контейнер кнопки теперь внутри text-box */
 #controls {
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 15px;
+  right: 20px;
   z-index: 20;
 }
+
 
 /* Кнопка-стрелка */
 .arrow-btn {
@@ -71,6 +97,12 @@ body, html {
   transition: color 0.3s;
 }
 
+
 .arrow-btn:hover {
   color: #aaa;
 }
+
+
+
+
+
