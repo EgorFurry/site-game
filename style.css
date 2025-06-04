@@ -52,13 +52,13 @@ body, html {
 }
 
 #text-box {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
+  position: fixed; /* фиксируем относительно окна браузера */
+  bottom: 20px;    /* отступ снизу */
+  left: 50%;       /* по центру */
   transform: translateX(-50%);
   max-width: 700px;
   width: 90%;
-  padding: 25px 40px 60px 40px; /* увеличим нижний паддинг, чтобы кнопка не налезала на текст */
+  padding: 25px 40px 60px 40px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   color: white;
@@ -73,8 +73,9 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: relative; /* для абсолютного позиционирования кнопки внутри */
+  position: fixed; /* фиксированное позиционирование */
 }
+
 
 /* Контейнер кнопки теперь внутри text-box */
 #controls {
