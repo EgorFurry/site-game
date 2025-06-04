@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Новелла с щупальцами</title>
+  <title>Новелла с анимированным диалогом</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -28,11 +28,14 @@
   <!-- Фон -->
   <div id="background"></div>
 
-  <!-- Диалоговое окно с щупальцами -->
+  <!-- Диалоговое окно -->
   <div id="text-box" class="glass-window">
-    <div id="text">Загрузка...</div>
-    <div id="controls">
-      <button id="nextBtn" class="arrow-btn">»</button>
+    <div class="animated-bg"></div>
+    <div class="content">
+      <div id="text">Загрузка...</div>
+      <div id="controls">
+        <button id="nextBtn" class="arrow-btn">»</button>
+      </div>
     </div>
   </div>
 
