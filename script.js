@@ -1,4 +1,3 @@
-
 const scenes = [
   {
     background: "images/bg_lightmist.jpg",
@@ -40,37 +39,30 @@ const scenes = [
 
 let currentScene = 0;
 let currentTextIndex = 0;
+let isTyping = false;
+let typingInterval;
 
 const background = document.getElementById("background");
 const textBox = document.getElementById("text");
 const nextBtn = document.getElementById("nextBtn");
 
 function showTextWithEffect(text) {
+  clearInterval(typingInterval);
   textBox.innerHTML = "";
   let index = 0;
-  const interval = setInterval(() => {
+  isTyping = true;
+  nextBtn.disabled = true;
+
+  typingInterval = setInterval(() => {
     textBox.innerHTML += text[index];
     index++;
     if (index >= text.length) {
-      clearInterval(interval);
+      clearInterval(typingInterval);
+      isTyping = false;
+      nextBtn.disabled = false;
     }
   }, 25);
 }
-
-const prevBtn = document.getElementById("prevBtn");
-
-prevBtn.addEventListener("click", () => {
-  if (isTyping) return;
-
-  if (currentTextIndex > 0) {
-    currentTextIndex--;
-  } else if (currentScene > 0) {
-    currentScene--;
-    currentTextIndex = scenes[currentScene].text.length - 1;
-  }
-  showCurrentScene();
-});
-
 
 function showCurrentScene() {
   const scene = scenes[currentScene];
@@ -79,6 +71,16 @@ function showCurrentScene() {
 }
 
 nextBtn.addEventListener("click", () => {
+  if (isTyping) {
+    // Если текст печатается, показываем его полностью
+    clearInterval(typingInterval);
+    const scene = scenes[currentScene];
+    textBox.innerHTML = scene.text[currentTextIndex];
+    isTyping = false;
+    nextBtn.disabled = false;
+    return;
+  }
+
   const scene = scenes[currentScene];
   if (currentTextIndex < scene.text.length - 1) {
     currentTextIndex++;
@@ -86,7 +88,7 @@ nextBtn.addEventListener("click", () => {
     currentScene++;
     currentTextIndex = 0;
     if (currentScene >= scenes.length) {
-      currentScene = scenes.length - 1;
+      currentScene = scenes.length - 1; // Остаёмся на последней сцене
     }
   }
   showCurrentScene();
@@ -96,3 +98,11 @@ nextBtn.addEventListener("click", () => {
 window.onload = () => {
   showCurrentScene();
 };
+
+// Привязка пробела к кнопке "далее"
+window.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
+    e.preventDefault();
+    nextBtn.click();
+  }
+});
