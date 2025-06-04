@@ -72,7 +72,6 @@ function showCurrentScene() {
 
 nextBtn.addEventListener("click", () => {
   if (isTyping) {
-    // Если текст печатается, показываем его полностью
     clearInterval(typingInterval);
     const scene = scenes[currentScene];
     textBox.innerHTML = scene.text[currentTextIndex];
@@ -88,18 +87,16 @@ nextBtn.addEventListener("click", () => {
     currentScene++;
     currentTextIndex = 0;
     if (currentScene >= scenes.length) {
-      currentScene = scenes.length - 1; // Остаёмся на последней сцене
+      currentScene = scenes.length - 1;
     }
   }
   showCurrentScene();
 });
 
-// Запуск начальной сцены
 window.onload = () => {
   showCurrentScene();
 };
 
-// Привязка пробела к кнопке "далее"
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
     e.preventDefault();

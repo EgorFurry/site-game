@@ -1,4 +1,4 @@
-/* Сброс стилей */
+/* Сброс */
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: whitesmoke;
+  background-color: black;
   overflow: hidden;
 }
 
@@ -24,86 +24,44 @@ body, html {
   z-index: 0;
 }
 
-/* Диалоговое окно с эффектом размытия */
+/* Диалоговое окно с эффектом щупалец */
 .glass-window {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   max-width: 700px;
   width: 90%;
-  padding: 25px 40px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  padding: 30px 40px 60px 40px;
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   font-size: 1.2rem;
   line-height: 1.6;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.15);
+  clip-path: url(#tentacleClip);
+  -webkit-clip-path: url(#tentacleClip);
   z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: fixed;
 }
 
 /* Текст */
 #text {
   white-space: pre-wrap;
   min-height: 80px;
+  margin-bottom: 20px;
 }
 
-#text-box {
-  position: fixed; /* фиксируем относительно окна браузера */
-  bottom: 20px;    /* отступ снизу */
-  left: 50%;       /* по центру */
-  transform: translateX(-50%);
-  max-width: 700px;
-  width: 90%;
-  padding: 25px 40px 60px 40px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  color: white;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  z-index: 10;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: fixed; /* фиксированное позиционирование */
-    clip-path: polygon(
-    5% 0%,  /* верхний левый край */
-    95% 0%, /* верхний правый край */
-    100% 10%, 
-    90% 25%, 
-    100% 40%, 
-    85% 55%, 
-    95% 70%, 
-    80% 85%, 
-    100% 100%, 
-    15% 100%, 
-    0% 85%, 
-    10% 70%, 
-    0% 55%, 
-    15% 40%, 
-    0% 25%, 
-    10% 10%
-  );
-
-}
-
-
-/* Контейнер кнопки теперь внутри text-box */
+/* Контролы */
 #controls {
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
-  z-index: 20;
+  align-self: flex-end;
 }
-
 
 /* Кнопка-стрелка */
 .arrow-btn {
@@ -117,12 +75,6 @@ body, html {
   transition: color 0.3s;
 }
 
-
 .arrow-btn:hover {
   color: #aaa;
 }
-
-
-
-
-

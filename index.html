@@ -3,24 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Тестовая Новелла: Ёжик в тумане</title>
+  <title>Новелла с щупальцами</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- SVG-маска для щупалец -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <clipPath id="tentacleClip" clipPathUnits="objectBoundingBox">
+        <path d="
+          M0.1,0.05
+          C0.05,0.2 0.1,0.4 0.05,0.6
+          C0.1,0.8 0.05,0.95 0.2,0.95
+          C0.3,0.9 0.35,1 0.5,0.95
+          C0.65,1 0.7,0.9 0.8,0.95
+          C0.95,0.95 0.9,0.8 0.95,0.6
+          C0.9,0.4 0.95,0.2 0.9,0.05
+          Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
   <!-- Фон -->
   <div id="background"></div>
 
-  <!-- Диалоговое окно -->
+  <!-- Диалоговое окно с щупальцами -->
   <div id="text-box" class="glass-window">
     <div id="text">Загрузка...</div>
-     <!-- Кнопка далее -->
     <div id="controls">
-    <button id="nextBtn" class="arrow-btn">»</button>
+      <button id="nextBtn" class="arrow-btn">»</button>
+    </div>
   </div>
-  </div>
-
- 
 
   <script src="script.js"></script>
 </body>
