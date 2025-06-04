@@ -45,16 +45,8 @@ body, html {
   margin-bottom: 20px;
   min-height: 80px;
   white-space: pre-wrap;
-  opacity: 1;
-  /* Если хотите анимацию появления, раскомментируйте ниже */
-  /* animation: fadeInText 1s forwards; */
-}
-
-/* Анимация появления текста (если нужна) */
-@keyframes fadeInText {
-  to {
-    opacity: 1;
-  }
+  opacity: 0;
+  animation: fadeInText 1s forwards;
 }
 
 /* Контейнер для кнопки */
